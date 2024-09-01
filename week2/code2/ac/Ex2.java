@@ -1,9 +1,8 @@
 package week2.code2.ac;
 import java.util.*;
 
-import week2.net.mindview.simple.*;
+import net.mindview.simple.Vector;
 
 public class Ex2 {
-    Vector v = new Vector();    
-;
+    //Vector v = new Vector();   // k thể biên dịch vì có xung đột như yêu cầu của đề bài
 }
