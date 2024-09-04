@@ -1,4 +1,4 @@
-package week2.code3.Classes.Date;
+package week2.code3.JavaClasses.Date;
 
 import java.time.LocalDateTime; // Import the LocalDateTime class
 import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class

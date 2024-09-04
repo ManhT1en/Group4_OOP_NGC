@@ -1,4 +1,4 @@
-package week2.code3.Classes.AdvancedSorting;
+package week2.code3.JavaClasses.AdvancedSorting;
 
 import java.util.ArrayList;
 import java.util.Collections;

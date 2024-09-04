@@ -1,4 +1,4 @@
-package week2.code3.Classes.HashSet;
+package week2.code3.JavaClasses.HashSet;
 
 import java.util.HashSet;
 

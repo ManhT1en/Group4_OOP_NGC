@@ -1,4 +1,4 @@
-package week2.code3.Classes.RegEx;
+package week2.code3.JavaClasses.RegEx;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,4 +1,4 @@
-package week2.code3.Classes.ArrayList;
+package week2.code3.JavaClasses.ArrayList;
 
 import java.util.ArrayList;
 import java.util.Collections;  // Import the Collections class
