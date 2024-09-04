@@ -1,4 +1,4 @@
-package week2.code3.Classes.WrapperClasses;
+package week2.code3.JavaClasses.WrapperClasses;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package week2.code3.Classes.Iterator;
+package week2.code3.JavaClasses.Iterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;

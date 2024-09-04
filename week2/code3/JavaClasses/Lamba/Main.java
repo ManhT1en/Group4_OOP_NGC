@@ -1,8 +1,8 @@
-package week2.code3.Classes.Lamba;
+package week2.code3.JavaClasses.Lamba;
 
 interface StringFunction {
     String run(String str);
-  }
+  } 
   
   public class Main {
     public static void main(String[] args) {

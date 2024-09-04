@@ -1,4 +1,4 @@
-package week2.code3.Classes.InnerClasses;
+package week2.code3.JavaClasses.InnerClasses;
 
 class OuterClass {
     int x = 10;
