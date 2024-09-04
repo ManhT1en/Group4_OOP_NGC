@@ -1,4 +1,4 @@
-package week2.code3.Classes.Inheritance;
+package week2.code3.JavaClasses.Inheritance;
 
 class Vehicle {
     protected String brand = "Ford";        // Vehicle attribute

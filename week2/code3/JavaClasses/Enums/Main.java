@@ -1,4 +1,4 @@
-package week2.code3.Classes.Enums;
+package week2.code3.JavaClasses.Enums;
 
 enum Level {
     LOW,

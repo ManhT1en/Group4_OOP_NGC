@@ -1,4 +1,4 @@
-package week2.code3.Classes.Abstraction;
+package week2.code3.JavaClasses.Abstraction;
 
 // Abstract class
 abstract class Animal {

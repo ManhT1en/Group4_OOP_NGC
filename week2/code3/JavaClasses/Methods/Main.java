@@ -1,4 +1,4 @@
-package week2.code3.Classes.Methods;
+package week2.code3.JavaClasses.Methods;
 
 // Create a Main class
 public class Main {

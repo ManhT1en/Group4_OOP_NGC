@@ -1,4 +1,4 @@
-package week2.code3.Classes.Scanner;
+package week2.code3.JavaClasses.Scanner;
 
 import java.util.Scanner;
 

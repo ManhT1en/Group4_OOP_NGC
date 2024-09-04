@@ -1,4 +1,4 @@
-package week2.code3.Classes.LinkedList;
+package week2.code3.JavaClasses.LinkedList;
 
 import java.util.LinkedList;
 

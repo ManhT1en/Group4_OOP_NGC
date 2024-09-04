@@ -1,4 +1,4 @@
-package week2.code3.Classes.HashMap;
+package week2.code3.JavaClasses.HashMap;
 
 import java.util.HashMap;
 
