@@ -12,7 +12,7 @@ public class Ex10 {
 
     public static void main(String[] args) {
         Ex10 mt = new Ex10();
-        mt = null; // Đặt đối tượng thành null
+        mt = null;
         System.gc(); // Yêu cầu Garbage Collector dọn dẹp bộ nhớ
         System.out.println("end of method"); // In ra ngay lập tức
     }
