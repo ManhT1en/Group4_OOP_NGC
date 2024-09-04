@@ -1,4 +1,4 @@
-package week2.code3.Classes.Exceptions;
+package week2.code3.JavaClasses.Exceptions;
 
 public class Main {
     static void checkAge(int age) {

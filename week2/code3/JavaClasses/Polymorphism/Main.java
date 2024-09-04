@@ -1,4 +1,4 @@
-package week2.code3.Classes.Polymorphism;
+package week2.code3.JavaClasses.Polymorphism;
 
 class Animal {
     public void animalSound() {

@@ -1,4 +1,4 @@
-package week2.code3.Classes.Threads;
+package week2.code3.JavaClasses.Threads;
 
 public class Main extends Thread {
     public static int amount = 0;

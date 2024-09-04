@@ -1,4 +1,4 @@
-package week2.code3.Classes.Interface;
+package week2.code3.JavaClasses.Interface;
 
 interface FirstInterface {
     public void myMethod(); // interface method

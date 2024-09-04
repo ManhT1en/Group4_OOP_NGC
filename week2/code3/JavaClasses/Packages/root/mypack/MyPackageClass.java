@@ -1,4 +1,4 @@
-package week2.code3.Classes.Packages.root.mypack;
+package week2.code3.JavaClasses.Packages.root.mypack;
 
 class MyPackageClass {
     public static void main(String[] args) {
