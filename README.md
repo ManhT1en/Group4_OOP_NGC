@@ -7,8 +7,8 @@ Thành viên:
 
 ### NỘI DUNG
 ### 1. SƠ ĐỒ KHỐI YÊU CẦU
-###    1.1 UML Component Diagram
-###    1.2 UML Sequence Diagram
+  ### 1.1 UML Component Diagram
+  ### 1.2 UML Sequence Diagram
 
 
      
