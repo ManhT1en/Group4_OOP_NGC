@@ -8,8 +8,8 @@ Thành viên:
 ### NỘI DUNG
 ### 1. SƠ ĐỒ KHỐI YÊU CẦU
   ### 1.1 UML Component Diagram
+  ![Structural Diagra năng(Class)](<sơ đồ chức năng.png>)
   ### 1.2 UML Sequence Diagram
 
 
      
-  
