@@ -14,7 +14,7 @@ Thành viên:
    Một số chức năng cơ bản:
 
    Login:
-   [alt text](<images/login.jpg>)
+   ![alt text](<images/login.jpg>)
 
    Thêm sinh viên:
    ![alt text](<images/add sinh viên.jpg>)
