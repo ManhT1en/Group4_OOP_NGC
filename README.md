@@ -26,4 +26,4 @@ Thành viên:
    ![Lọc danh sách](images/lọc%20danh%20sách.jpg)
 
    Đăng nhập:
-   ![Đăng nhập](D:\OOP\oop_group4_1_1_24_N02\images\View_Login.png)
+   ![Đăng nhập](images/View_Login.png)
