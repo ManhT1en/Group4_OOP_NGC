@@ -1,4 +1,4 @@
-package com.project;
+package com.mycompany.app.models;
 
 public class Student {
     private String name;

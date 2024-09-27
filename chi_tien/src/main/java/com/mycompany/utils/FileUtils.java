@@ -1,4 +1,4 @@
-package com.mycompany.app.utils;
+package com.mycompany.utils;
 
 import com.mycompany.app.models.Student;
 import com.mycompany.app.models.Course;
