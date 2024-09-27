@@ -1,49 +1,60 @@
 package com.mycompany.app.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
     private String name;
-    private int id;
-    private float gpa;
-    private String sex;
+    private String id;
+    private double gpa;
+    private List<Course> courses;
 
     public Student(){}
 
-    public Student(String name, int id, float gpa, String sex){
+    public Student(String name, String id, double gpa){
         this.name = name;
         this.id = id;
         this.gpa = gpa;
-        this.sex = sex;
+        this.courses = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public float getGpa() {
+    public double getGpa() {
         return gpa;
     }
 
-    public String getSex() {
-        return sex;
+    public List<Course> getCourses() {
+        return courses;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setGpa(float gpa) {
+    public void setGpa(double gpa) {
         this.gpa = gpa;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void addCourse(Course course) {
+        this.courses.add(course);
     }
     
+    @Override
+    public String toString() {
+        return "Student{" +
+               "id='" + id + '\'' +
+               ", name='" + name + '\'' +
+               ", gpa=" + gpa +
+               '}';
+    }
 }
