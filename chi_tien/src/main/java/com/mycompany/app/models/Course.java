@@ -1,22 +1,20 @@
 package com.mycompany.app.models;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Course {
     private String courseID;
     private String courseName;
     private List<Student> student;
-    private Map<Student, Double> score;
 
     public Course() {
     }
 
-    public Course(String courseID, String courseName, List<Student> student, Map<Student, Double> score) {
+    public Course(String courseID, String courseName) {
         this.courseID = courseID;
         this.courseName = courseName;
-        this.student = student;
-        this.score = score;
+        this.student = new ArrayList<>();
     }
 
     public String getCourseID() {
@@ -27,6 +25,10 @@ public class Course {
         return courseName;
     }
 
+    public List<Student> getStudent() {
+        return student;
+    }
+
     public void setCourseID(String courseID) {
         this.courseID = courseID;
     }
@@ -35,17 +37,16 @@ public class Course {
         this.courseName = courseName;
     }
     
-    public Map<Student, Double> getScore() {
-        return score;
-    }
-    
-    public void setScore(Map<Student, Double> score) {
-        this.score = score;
+    public void addStudent(Student student) {
+        this.student.add(student);
     }
 
-    public List<Student> getStudent() {
-        return student; // Trả về danh sách sinh viên của môn học này
+    @Override
+    public String toString() {
+        return "Course{" +
+               "courseId='" + courseID + '\'' +
+               ", courseName='" + courseName + '\'' +
+               '}';
     }
-    
-    
+
 }
