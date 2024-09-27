@@ -20,10 +20,10 @@ public class CourseController {
     // Method to add a course
     @FXML
     private void addCourse() {
-        String courseId = courseIdField.getText();
+        String courseID = courseIdField.getText();
         String courseName = courseNameField.getText();
 
-        Course course = new Course(courseId, courseName);
+        Course course = new Course(courseID, courseName);
         courseList.add(course);
         courseListView.setItems(courseList);
 
