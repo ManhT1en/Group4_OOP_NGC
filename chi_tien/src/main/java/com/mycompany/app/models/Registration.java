@@ -28,6 +28,7 @@ public class Registration {
     // Setter methods
     public void setScore(double score) {
         this.score = score;
+
     }
 
     @Override

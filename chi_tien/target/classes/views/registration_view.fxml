@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mycompany.app.controllers.RegistrationController">
+    <children>
+        <Label text="Student ID" layoutX="50" layoutY="50"/>
+        <TextField fx:id="studentIdField" layoutX="150" layoutY="50"/>
+        <Label text="Course ID" layoutX="50" layoutY="100"/>
+        <TextField fx:id="courseIdField" layoutX="150" layoutY="100"/>
+        <Label text="Score" layoutX="50" layoutY="150"/>
+        <TextField fx:id="scoreField" layoutX="150" layoutY="150"/>
+        <Button text="Register Student" layoutX="150" layoutY="200" onAction="#registerStudent"/>
+        <ListView fx:id="registrationListView" layoutX="50" layoutY="250"/>
+    </children>
+</AnchorPane>
