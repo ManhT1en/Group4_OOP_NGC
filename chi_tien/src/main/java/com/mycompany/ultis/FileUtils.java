@@ -1,14 +1,18 @@
-package com.mycompany.app.utils;
+package com.mycompany.ultis;
 
-import com.mycompany.app.models.Student;
-import com.mycompany.app.models.Course;
-import com.mycompany.app.models.Registration;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileUtils {
+import com.mycompany.app.models.Course;
+import com.mycompany.app.models.Registration;
+import com.mycompany.app.models.Student;
 
+public class FileUtils {
     private static final String STUDENT_FILE = "students.dat";
     private static final String COURSE_FILE = "courses.dat";
     private static final String REGISTRATION_FILE = "registrations.dat";
