@@ -8,7 +8,7 @@ Thành viên:
 ### NỘI DUNG
 ### 1. SƠ ĐỒ KHỐI YÊU CẦU
   ### 1.1 UML Component Diagram
-   ![Sơ đồ Component](images/sơ đồ.jpg)
+   ![Sơ đồ Component](images/sơ%đồ.jpg)
   
   ### 1.2 UML Sequence Diagram
    Một số chức năng cơ bản:
@@ -16,14 +16,18 @@ Thành viên:
    Đăng nhập:
    ![Đăng nhập](images/login.jpg)
 
+
    Thêm sinh viên:
    ![Thêm sinh viên](images/add%20sinh%20viên.jpg)
+
 
    Đăng ký môn:
    ![Đăng ký môn](images/đăng%20kí%20môn.jpg)
 
+
    Lọc danh sách:
    ![Lọc danh sách](images/lọc%20danh%20sách.jpg)
+
 
    Đăng nhập:
    ![Đăng nhập](images/View_Login.png)
