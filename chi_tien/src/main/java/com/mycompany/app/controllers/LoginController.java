@@ -18,7 +18,7 @@ public class LoginController {
     private Label loginMessage;
 
     private static final String USERNAME = "admin";
-    private static final String PASSWORD = "password";
+    private static final String PASSWORD = "123";
 
     @FXML
     private void handleLogin() {

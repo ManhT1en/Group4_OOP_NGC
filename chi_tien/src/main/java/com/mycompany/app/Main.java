@@ -26,7 +26,7 @@ public class Main extends Application {
     // Chuyển sang giao diện khác
     public static void loadView(String fxml) throws IOException {
         try {
-            scene.setRoot(loadFXML(fxml));
+            scene.setRoot(loadFXML(fxml)); // Sử dụng loadFXML để nạp giao diện mới
         } catch (IOException e) {
             System.out.println("Error loading view: " + fxml);
             e.printStackTrace(); // In chi tiết lỗi ra console
@@ -38,7 +38,6 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }       
-    
 
     public static void main(String[] args) {
         launch();
