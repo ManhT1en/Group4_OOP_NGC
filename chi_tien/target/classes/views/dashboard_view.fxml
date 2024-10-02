@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.app.controllers.DashboardController">
+    <children>
+        <Label text="Welcome to the User Dashboard!" />
+        <Button text="Go to Students Managemnt" onAction="#handleStudentManagement"/>
+        <Button text="Go to Course Management" onAction="#handleGoToCourse"/> 
+        <Button text="Logout" onAction="#handleLogout"/>
+    </children>
+</VBox>
