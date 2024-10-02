@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mycompany.app.controllers.LoginController"
+          alignment="center" hgap="10" vgap="10" style="-fx-padding: 20;">
+    
+    <!-- Tiêu đề -->
+    <Label text="Login" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 24px;"/>
+
+    <!-- Username -->
+    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <!-- Password -->
+    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <!-- Thông báo -->
+    <Label fx:id="messageLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-text-fill: red;"/>
+
+    <!-- Nút đăng nhập -->
+    <Button text="Login" onAction="#handleLogin" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <!-- Nút đăng ký -->
+    <Button text="Register" onAction="#handleRegister" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <!-- Khoảng trống giữa các cột -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</GridPane>
