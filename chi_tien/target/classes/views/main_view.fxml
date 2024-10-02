@@ -1,8 +1,0 @@
-<!-- main_view.fxml -->
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mycompany.app.controllers.MainController">
-    <children>
-        <Button fx:id="addStudentButton" text="Thêm Sinh Viên" layoutX="100" layoutY="50" onAction="#handleAddStudent"/>
-        <Button fx:id="addCourseButton" text="Thêm Khóa Học" layoutX="100" layoutY="100" onAction="#handleAddCourse"/>
-        <Button fx:id="manageRegistrationButton" text="Quản Lý Đăng Ký" layoutX="100" layoutY="150" onAction="#handleManageRegistration"/>
-    </children>
-</AnchorPane>
