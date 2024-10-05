@@ -17,6 +17,6 @@
         <Button text="Filter" onAction="#filterStudents"/> 
         <Button text="Delete Student" onAction="#deleteStudent"/> 
         <ListView fx:id="studentListView"/>
-            
+        <Button text="Back to Dashboard" onAction="#handleBackToDashboard"/>
     </children>
 </VBox>
