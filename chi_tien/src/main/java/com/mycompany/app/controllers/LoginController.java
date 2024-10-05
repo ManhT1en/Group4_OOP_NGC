@@ -18,7 +18,7 @@ public class LoginController {
     @FXML private Label messageLabel;
 
     private FileManager fileManager;
-    private String path = "D:\\OOP\\oop_group4_1_1_24_N02\\chi_tien\\file\\login.txt";
+    private String path = "D:\\CODE\\java\\oop_group4_1_1_24_N02-1\\chi_tien\\file\\login.txt";
 
     public LoginController() {
         fileManager = new FileManager(path); 
