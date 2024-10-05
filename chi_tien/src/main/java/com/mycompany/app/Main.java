@@ -14,9 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Bắt đầu với giao diện login
-        scene = new Scene(loadFXML("login_view"), 640, 480);
-        stage.setTitle("Login Application"); // Đặt tiêu đề cho cửa sổ
+        scene = new Scene(loadFXML("login_view"), 640, 480); // Mặc định vào giao diện đăng nhập
         stage.setScene(scene);
         stage.show();
     }
@@ -26,12 +24,7 @@ public class Main extends Application {
     }
 
     public static void loadView(String fxml) throws IOException {
-        try {
-            setRoot(fxml); // Nạp giao diện từ file FXML
-        } catch (IOException e) {
-            System.out.println("Error loading view: " + fxml);
-            e.printStackTrace(); // In lỗi ra console
-        }
+        setRoot(fxml); // Đổi root của scene thành view được truyền vào
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
