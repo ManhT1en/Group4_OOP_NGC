@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mycompany.app.controllers.StudentController">
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.app.controllers.StudentController">
     <children>
-        <Label text="Quản Lý Sinh Viên" layoutX="50" layoutY="20"/>
-        <Label text="Student ID" layoutX="50" layoutY="50"/>
-        <TextField fx:id="studentIdField" layoutX="150" layoutY="50"/>
-        <Label text="Student Name" layoutX="50" layoutY="100"/>
-        <TextField fx:id="studentNameField" layoutX="150" layoutY="100"/>
-        <Label text="GPA" layoutX="50" layoutY="150"/>
-        <TextField fx:id="studentGpaField" layoutX="150" layoutY="150"/>
-        <Button text="Add Student" layoutX="150" layoutY="200" onAction="#addStudent"/>
-        <ListView fx:id="studentListView" layoutX="50" layoutY="250"/>
-        <Button text="Quay lại" layoutX="50" layoutY="500" onAction="#handleBackToDashboard"/>
-        <Button text="Lưu" layoutX="150" layoutY="500" onAction="#saveStudents"/>
-        <Button text="Load Students" layoutX="250" layoutY="500" onAction="#loadStudents"/>
+        <Label text="Student Management" />
+        <TextField fx:id="studentIdField" promptText="Student ID" />
+        <TextField fx:id="studentNameField" promptText="Student Name" />
+        <TextField fx:id="studentGpaField" promptText="GPA" />
+        <Button text="Add Student" onAction="#addStudent"/>
+        <Button text="Load Students" onAction="#loadStudents"/>
+        <TextField fx:id="filterGpaField" promptText="Filter by GPA" />
+        <Button text="Filter" onAction="#filterStudents"/> 
+        <Button text="Delete Student" onAction="#deleteStudent"/> 
+        <ListView fx:id="studentListView"/>
+            
     </children>
-</AnchorPane>
+</VBox>

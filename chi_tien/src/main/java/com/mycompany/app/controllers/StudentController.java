@@ -3,8 +3,7 @@ package com.mycompany.app.controllers;
 import java.io.IOException;
 
 import com.mycompany.app.Main;
-import com.mycompany.app.models.Student;
-import com.mycompany.ultis.FileUtils;
+import com.mycompany.app.models.studentDAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,45 +15,87 @@ public class StudentController {
     @FXML private TextField studentIdField;
     @FXML private TextField studentNameField;
     @FXML private TextField studentGpaField;
-    @FXML private ListView<Student> studentListView;
+    @FXML private TextField filterGpaField; 
+    @FXML private ListView<String> studentListView;
 
-    private ObservableList<Student> studentList = FXCollections.observableArrayList();
+    private ObservableList<String> studentList = FXCollections.observableArrayList();
+    private studentDAO studentDAO = new studentDAO(); 
 
-    // Method to add a student
     @FXML
     private void addStudent() {
         String id = studentIdField.getText();
         String name = studentNameField.getText();
         double gpa = Double.parseDouble(studentGpaField.getText());
 
-        Student student = new Student(id, name, gpa);
-        studentList.add(student);
+        studentDAO.saveStudent(name, id, (float) gpa);
+
+        String studentInfo = "ID: " + id + ", Name: " + name + ", GPA: " + gpa;
+        studentList.add(studentInfo);
         studentListView.setItems(studentList);
 
-        // Clear input fields
         studentIdField.clear();
         studentNameField.clear();
         studentGpaField.clear();
     }
 
-    // Method to load students from file
     @FXML
     private void loadStudents() {
-        // Call method from FileUtils to load students from file
-        studentList.setAll(FileUtils.loadStudents());
+        studentList.clear(); 
+
+        for (String[] studentData : studentDAO.loadStudents()) {
+            String studentInfo = "ID: " + studentData[0] + ", Name: " + studentData[1] + ", GPA: " + studentData[2];
+            studentList.add(studentInfo); 
+        }
+
         studentListView.setItems(studentList);
     }
 
-    // Method to save students to file
     @FXML
-    private void saveStudents() {
-        // Call method from FileUtils to save students to file
-        FileUtils.saveStudents(studentList);
+    private void filterStudents() {
+        double filterGpa = Double.parseDouble(filterGpaField.getText()); 
+        ObservableList<String> filteredList = FXCollections.observableArrayList();
+
+        for (String studentInfo : studentList) {
+            String[] studentData = studentInfo.split(", ");
+            double gpa = Double.parseDouble(studentData[2].split(": ")[1]); 
+            if (gpa >= filterGpa) { 
+                filteredList.add(studentInfo); 
+            }
+        }
+
+        studentListView.setItems(filteredList);
     }
-    
-    // Method to handle going back to the dashboard
+
+    // Phương thức xóa sinh viên đã chọn
+    @FXML
+    private void deleteStudent() {
+        String selectedStudent = studentListView.getSelectionModel().getSelectedItem(); // Lấy sinh viên đã chọn
+
+        if (selectedStudent != null) {
+            // Xóa sinh viên khỏi danh sách
+            studentList.remove(selectedStudent);
+            studentListView.setItems(studentList);
+
+            // Cập nhật file lưu sinh viên
+            updateStudentFile();
+        }
+    }
+
+    // Phương thức để cập nhật lại file lưu sinh viên sau khi xóa
+    private void updateStudentFile() {
+        // Đọc toàn bộ sinh viên trong danh sách và lưu vào file
+        studentDAO.clearStudentsFile(); // Phương thức xóa file (xem thêm bên dưới)
+        for (String studentInfo : studentList) {
+            String[] parts = studentInfo.split(", ");
+            String id = parts[0].split(": ")[1];
+            String name = parts[1].split(": ")[1];
+            double gpa = Double.parseDouble(parts[2].split(": ")[1]);
+            studentDAO.saveStudent(name, id, (float) gpa);
+        }
+    }
+
     @FXML
     private void handleBackToDashboard() throws IOException {
-        Main.loadView("dashboard_view"); // Quay lại dashboard
+        Main.loadView("dashboard_view"); 
     }
 }
