@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.app.controllers.StudentController">
+    <children>
+        <Label text="Student Management" />
+        <TextField fx:id="studentIdField" promptText="Student ID" />
+        <TextField fx:id="studentNameField" promptText="Student Name" />
+        <TextField fx:id="studentGpaField" promptText="GPA" />
+        <Button text="Add Student" onAction="#addStudent"/>
+        <Button text="Load Students" onAction="#loadStudents"/>
+        <TextField fx:id="filterGpaField" promptText="Filter by GPA" />
+        <Button text="Filter" onAction="#filterStudents"/> 
+        <Button text="Delete Student" onAction="#deleteStudent"/> 
+        <ListView fx:id="studentListView"/>
+        <Button text="Back to Dashboard" onAction="#handleBackToDashboard"/>
+    </children>
+</VBox>
