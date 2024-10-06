@@ -63,7 +63,7 @@ public class LoginController {
         }
 
         try {
-            fileManager.saveLogin(username, password);
+            fileManager.iDataLogin(username, password);
             messageLabel.setText("User registered successfully!");
         } catch (IOException e) {
             e.printStackTrace();
