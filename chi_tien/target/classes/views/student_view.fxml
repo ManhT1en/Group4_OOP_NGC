@@ -14,9 +14,10 @@
         <Button text="Add Student" onAction="#addStudent"/>
         <Button text="Load Students" onAction="#loadStudents"/>
         <TextField fx:id="filterGpaField" promptText="Filter by GPA" />
-        <Button text="Filter" onAction="#filterStudents"/> 
+        <Button text="Filter" onAction="#filterStudents"/>
         <Button text="Delete Student" onAction="#deleteStudent"/> 
         <ListView fx:id="studentListView"/>
         <Button text="Back to Dashboard" onAction="#handleBackToDashboard"/>
+        <Label fx:id="messageLabel" text="" style="-fx-text-fill: red;"/> 
     </children>
 </VBox>

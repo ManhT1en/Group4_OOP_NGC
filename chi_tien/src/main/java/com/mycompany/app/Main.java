@@ -24,8 +24,14 @@ public class Main extends Application {
     }
 
     public static void loadView(String fxml) throws IOException {
-        setRoot(fxml); // Đổi root của scene thành view được truyền vào
+        try {
+            scene.setRoot(loadFXML(fxml)); // Nạp giao diện từ file FXML
+        } catch (IOException e) {
+            System.out.println("Error loading view: " + fxml);
+            e.printStackTrace(); // In lỗi ra console
+        }
     }
+    
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/" + fxml + ".fxml"));
