@@ -17,6 +17,7 @@
         <Button text="Filter" onAction="#filterStudents"/>
         <Button text="Delete Student" onAction="#deleteStudent"/> 
         <ListView fx:id="studentListView"/>
+        <TextArea fx:id="studentCoursesArea" promptText="Courses of selected student" /> <!-- Thêm TextArea này -->
         <Button text="Back to Dashboard" onAction="#handleBackToDashboard"/>
         <Label fx:id="messageLabel" text="" style="-fx-text-fill: red;"/> 
     </children>

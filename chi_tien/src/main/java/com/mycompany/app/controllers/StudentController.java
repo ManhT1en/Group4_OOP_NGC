@@ -6,13 +6,16 @@ import java.io.IOException;
 import java.util.List;
 
 import com.mycompany.app.Main;
+import com.mycompany.app.models.Course;
 import com.mycompany.app.models.FileManager;
+import com.mycompany.app.models.Student;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class StudentController {
@@ -20,50 +23,49 @@ public class StudentController {
     @FXML private TextField studentNameField;
     @FXML private TextField studentGpaField;
     @FXML private ListView<String> studentListView;
-    @FXML private Label messageLabel; 
+    @FXML private Label messageLabel;
+    @FXML private TextArea studentCoursesArea;
 
     private ObservableList<String> studentList = FXCollections.observableArrayList();
-    private FileManager fileManager = new FileManager("oop_group4_1_1_24_N02\\chi_tien\\file\\studentManager.txt");
+    private FileManager fileManager = new FileManager("chi_tien\\file\\studentManager.txt");
 
     @FXML
-    private void addStudent() {
+    private void addStudent() throws IOException {
         String id = studentIdField.getText();
         String name = studentNameField.getText();
         String gpaStr = studentGpaField.getText();
     
         if (id.isEmpty() || name.isEmpty() || gpaStr.isEmpty()) {
             messageLabel.setText("All fields (ID, Name, GPA) must be filled.");
-            return; 
+            return;
         }
     
         float gpa;
-    
         try {
-            gpa = Float.parseFloat(gpaStr); 
+            gpa = Float.parseFloat(gpaStr);
             if (gpa < 0 || gpa > 4) {
                 messageLabel.setText("GPA must be between 0 and 4.");
-                return; 
+                return;
             }
         } catch (NumberFormatException e) {
             messageLabel.setText("Invalid GPA format. Please enter a valid number.");
             return;
         }
     
-        List<String[]> currentStudents = fileManager.loadStudents(); 
-        studentList.clear(); 
+        List<String[]> currentStudents = fileManager.loadStudents();
+        studentList.clear();
         for (String[] student : currentStudents) {
-            studentList.add(student[0] + "</st>" + student[1] + "</st>" + student[2] + "</st>"); // Thêm sinh viên cũ vào danh sách
+            studentList.add(student[0] + "</st>" + student[1] + "</st>" + student[2] + "</st>");
         }
-    
-        String studentData = id + "</st>" + name + "</st>" + gpa + "</st>";
-        studentList.add(studentData); 
-    
-        saveStudents(); 
+
+        Student student = new Student(name, id, gpa);
+
+        fileManager.saveStudent(name, id, gpa, student.getCourses());
     
         studentIdField.clear();
         studentNameField.clear();
         studentGpaField.clear();
-        messageLabel.setText("Student added successfully!"); 
+        messageLabel.setText("Student added successfully!");
     }
     
     @FXML
@@ -71,7 +73,7 @@ public class StudentController {
         List<String[]> students = fileManager.loadStudents();
         studentList.clear(); 
         for (String[] student : students) {
-            studentList.add(student[0] + "</st>" + student[1] + "</st>" + student[2] + "</st>"); // Thêm sinh viên vào danh sách
+            studentList.add(student[0] + "</st>" + student[1] + "</st>" + student[2] + "</st>"); 
         }
         studentListView.setItems(studentList); 
     }
@@ -127,7 +129,7 @@ public class StudentController {
     }
 
     private void saveStudents() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("oop_group4_1_1_24_N02\\chi_tien\\file\\studentManager.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("chi_tien\\file\\studentManager.txt"))) {
             for (String student : studentList) {
                 writer.write(student);
                 writer.newLine(); 
@@ -142,4 +144,33 @@ public class StudentController {
     private void handleBackToDashboard() throws IOException {
         Main.loadView("dashboard_view"); 
     }
+
+    @FXML
+    private void showStudentCourses() {
+        String selectedStudent = studentListView.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            String[] studentData = selectedStudent.split("</st>");
+            if (studentData.length == 3) {
+                String studentId = studentData[0]; // Lấy ID sinh viên
+                
+                // Tìm sinh viên theo ID
+                Student student = fileManager.findStudentById(studentId); // Bạn cần có phương thức này trong FileManager
+                
+                if (student != null) {
+                    studentCoursesArea.clear(); // Xóa nội dung cũ
+                    studentCoursesArea.appendText("Courses for " + student.getName() + ":\n");
+                    
+                    // Hiển thị danh sách khóa học
+                    for (Course course : student.getCourses()) {
+                        studentCoursesArea.appendText(course.getCourseName() + "\n"); // Hiển thị tên khóa học
+                    }
+                } else {
+                    studentCoursesArea.setText("Student not found.");
+                }
+            }
+        } else {
+            studentCoursesArea.setText("Please select a student.");
+        }
+    }
+    
 }
