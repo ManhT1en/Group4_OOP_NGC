@@ -25,21 +25,24 @@ public class FileManager {
         return filePath;
     }
         
-     // Lưu sinh viên vào file
-    public void saveStudent(String name, String id, float gpa) throws IOException{
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("oop_group4_1_1_24_N02\\chi_tien\\file\\studentManager.txt", true))) {
-            writer.write(id + "</st>" + name + "</st>" + gpa + "</st>");
-            writer.newLine(); 
+    public void saveStudent(String name, String id, float gpa, List<Course> courses) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("chi_tien\\file\\studentManager.txt", true))) {
+            StringBuilder coursesData = new StringBuilder();
+            for (Course course : courses) {
+                coursesData.append(course.getCourseID()).append(",").append(course.getCourseName()).append(";"); // Giả sử bạn có getCourseId() và getCourseName() trong Course
+            }
+            writer.write(id + "</st>" + name + "</st>" + gpa + "</st>" + coursesData.toString());
+            writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Tải danh sách sinh viên từ file
+
     public List<String[]> loadStudents() {
         List<String[]> students = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("oop_group4_1_1_24_N02\\chi_tien\\file\\studentManager.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("chi_tien\\file\\studentManager.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] studentData = line.split("</st>");
@@ -54,16 +57,29 @@ public class FileManager {
         return students; 
     }
 
-    public void saveCourses(List<Course> courses) throws IOException {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))) {
-            out.writeObject(courses);
+    public void saveCourse(Course course) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("path_to_course_file", true))) {
+            writer.write(course.getCourseID() + "</courseId>" + course.getCourseName() + "</courseName>");
+            writer.newLine();
         }
     }
-
-    public List<Course> loadCourses() throws IOException, ClassNotFoundException {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
-            return (List<Course>) in.readObject();
+    
+    public List<Course> loadCourses() {
+        List<Course> courses = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("path_to_course_file"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] courseData = line.split("</courseId>");
+                if (courseData.length == 2) {
+                    String courseId = courseData[0];
+                    String courseName = courseData[1];
+                    courses.add(new Course(courseId, courseName)); // Tạo đối tượng Course
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return courses;
     }
 
     public void saveRegistrations(List<Registration> registrations) throws IOException {
@@ -81,7 +97,7 @@ public class FileManager {
     public void iDataLogin(String username, String password) throws IOException {
         try (BufferedWriter writerData = new BufferedWriter(new FileWriter(this.getFilePath(), true))) {
             writerData.write(username + "</id>" + password + "</pass>");
-            writerData.newLine(); // Thêm dòng mới sau mỗi đăng nhập
+            writerData.newLine(); 
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,5 +115,13 @@ public class FileManager {
         }
         return result.toString();
     }
-    
+    public Student findStudentById(String studentId) {
+        List<String[]> students = loadStudents();
+        for (String[] studentData : students) {
+            if (studentData[0].equals(studentId)) {
+                return new Student(studentData[1], studentData[0], Double.parseDouble(studentData[2]));
+            }
+        }
+        return null; 
+    }
 }
