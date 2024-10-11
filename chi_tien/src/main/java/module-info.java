@@ -10,6 +10,7 @@ module com.mycompany.app {
     requires javafx.controls; // Add this line to include javafx.controls module
 
     requires java.base;
+    requires java.sql;
 
 
 

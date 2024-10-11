@@ -27,7 +27,7 @@ public class StudentController {
     @FXML private TextArea studentCoursesArea;
 
     private ObservableList<String> studentList = FXCollections.observableArrayList();
-    private FileManager fileManager = new FileManager("chi_tien\\file\\studentManager.txt");
+    private FileManager fileManager = new FileManager("oop_group4_1_1_24_N02\\chi_tien\\file\\studentManager.txt");
 
     @FXML
     private void addStudent() throws IOException {
@@ -129,7 +129,7 @@ public class StudentController {
     }
 
     private void saveStudents() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("chi_tien\\file\\studentManager.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("oop_group4_1_1_24_N02\\chi_tien\\file\\studentManager.txt"))) {
             for (String student : studentList) {
                 writer.write(student);
                 writer.newLine(); 
