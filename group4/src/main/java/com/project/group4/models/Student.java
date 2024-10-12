@@ -14,10 +14,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "students") 
+@Table(name = "students")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -29,9 +29,9 @@ public class Student {
     @Column(name = "gpa")
     private double gpa;
 
-    @ManyToMany 
+    @ManyToMany
     @JoinTable(
-        name = "student_courses", 
+        name = "student_courses",
         joinColumns = @JoinColumn(name = "student_id"),
         inverseJoinColumns = @JoinColumn(name = "course_id")
     )
@@ -48,6 +48,7 @@ public class Student {
         this.courses = new ArrayList<>();
     }
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -65,7 +66,7 @@ public class Student {
     }
 
     public List<Course> getCourses() {
-        return courses;
+        return courses;  
     }
 
     public void setId(Long id) {

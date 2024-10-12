@@ -1,17 +1,8 @@
 package com.project.group4.models;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "courses")
@@ -19,48 +10,58 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Khóa chính tự động tăng
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "course_id", nullable = false, unique = true)
-    private String courseID;
+    private String courseId;
 
     @Column(name = "course_name", nullable = false)
     private String courseName;
 
-    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>(); // Liên kết nhiều-nhiều với Student
 
+    // Constructor mặc định
     public Course() {
     }
 
-    public Course(String courseID, String courseName) {
-        this.courseID = courseID;
+    // Constructor với tham số
+    public Course(String courseId, String courseName) {
+        this.courseId = courseId;
         this.courseName = courseName;
     }
 
+    // Getters và Setters
     public Long getId() {
         return id;
     }
 
-    public String getCourseID() {
-        return courseID;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {
         return courseName;
     }
 
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
     public List<Student> getStudents() {
         return students;
     }
 
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public void addStudent(Student student) {
@@ -71,7 +72,8 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-               "courseId='" + courseID + '\'' +
+               "id=" + id +
+               ", courseId='" + courseId + '\'' +
                ", courseName='" + courseName + '\'' +
                '}';
     }
