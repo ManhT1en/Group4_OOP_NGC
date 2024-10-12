@@ -60,24 +60,24 @@ public class CourseController {
         }
     }
 
-//     @FXML
-//     private void showStudentsInSelectedCourse() {
-//         String selectedCourse = courseListView.getSelectionModel().getSelectedItem();
-//         if (selectedCourse != null) {
-//             String[] courseData = selectedCourse.split("</cid>");
-//             String courseId = courseData[0]; // Lấy ID khóa học từ danh sách
+    @FXML
+    private void showStudentsInSelectedCourse() {
+        // String selectedCourse = courseListView.getSelectionModel().getSelectedItem();
+        // if (selectedCourse != null) {
+        //     String[] courseData = selectedCourse.split("</cid>");
+        //     String courseId = courseData[0]; // Lấy ID khóa học từ danh sách
 
-//             // Tìm khóa học trong danh sách
-//             for (Course course : courseList) {
-//                 if (course.getCourseID().equals(courseId)) {
-//                     List<Student> enrolledStudents = course.getStudent(); // Lấy danh sách sinh viên đã đăng ký
-//                     // Hiển thị danh sách sinh viên
-//                     for (Student student : enrolledStudents) {
-//                         System.out.println("Student: " + student.getName()); // In ra danh sách sinh viên
-//                     }
-//                     break;
-//                 }
-//             }
-//         }
-//     }
+        //     // Tìm khóa học trong danh sách
+        //     for (Course course : courseList) {
+        //         if (course.getCourseID().equals(courseId)) {
+        //             List<Student> enrolledStudents = course.getStudent(); // Lấy danh sách sinh viên đã đăng ký
+        //             // Hiển thị danh sách sinh viên
+        //             for (Student student : enrolledStudents) {
+        //                 System.out.println("Student: " + student.getName()); // In ra danh sách sinh viên
+        //             }
+        //             break;
+        //         }
+        //     }
+        // }
+    }
 }

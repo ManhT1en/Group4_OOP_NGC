@@ -15,7 +15,6 @@
         <Button text="Load Students" onAction="#loadStudents"/>
         <TextField fx:id="filterGpaField" promptText="Filter by GPA" />
         <Button text="Filter" onAction="#filterStudents"/>
-        <Button text="Show Courses" onAction="#showStudentCourses"/>
         <Button text="Delete Student" onAction="#deleteStudent"/> 
         <ListView fx:id="studentListView"/>
         <TextArea fx:id="studentCoursesArea" promptText="Courses of selected student" /> <!-- Thêm TextArea này -->
