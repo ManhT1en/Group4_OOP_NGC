@@ -13,46 +13,47 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.group4.models.Course;
 import com.project.group4.models.Student;
+import com.project.group4.repository.CourseRepository;
 import com.project.group4.repository.StudentRepository;
 
 @Controller
-@RequestMapping("/students") 
+@RequestMapping("/students")
 public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
     // Hiển thị danh sách sinh viên
     @GetMapping
-public String showStudents(Model model) {
-    List<Student> students = studentRepository.findAll();
-    model.addAttribute("students", students);
-    return "students"; 
-}
+    public String showStudents(Model model) {
+        List<Student> students = studentRepository.findAll();
+        model.addAttribute("students", students);
+        return "students"; 
+    }
 
-    // Thêm sinh viên
+    // Thêm sinh viên mới
     @PostMapping("/add")
-    public String addStudent(@RequestParam String name, 
-                            @RequestParam String studentId, 
-                            @RequestParam double gpa, Model model) {
-        // Kiểm tra GPA
-        if (gpa < 0.0 || gpa > 4.0) {
-            model.addAttribute("error", "GPA must be between 0.0 and 4.0");
-            return "students"; // Trả về trang danh sách sinh viên với thông báo lỗi
-        }
-
-        Student student = new Student(name, studentId, gpa);
+    public String addStudent(@RequestParam String name, @RequestParam String studentId) {
+        Student student = new Student(name, studentId);
         studentRepository.save(student);
         return "redirect:/students"; 
     }
 
-
-    // Lọc sinh viên theo GPA
-    @GetMapping("/filter")
-    public String filterByGpa(@RequestParam double gpa, Model model) {
-        List<Student> filteredStudents = studentRepository.findByGpaGreaterThanEqual(gpa);
-        model.addAttribute("students", filteredStudents); 
-        return "students"; 
+    // Hiển thị danh sách các môn học của sinh viên
+    @GetMapping("/{id}/courses")
+    public String showStudentCourses(@PathVariable Long id, Model model) {
+        Student student = studentRepository.findById(id).orElse(null);
+        if (student != null) {
+            List<Course> courses = student.getCourses(); // Lấy danh sách khóa học của sinh viên
+            model.addAttribute("courses", courses);
+            model.addAttribute("student", student);
+            return "studentCourses"; // Trả về view hiển thị danh sách môn học
+        } else {
+            return "redirect:/students?error=notfound";
+        }
     }
 
     // Xóa sinh viên
@@ -60,17 +61,10 @@ public String showStudents(Model model) {
     public String deleteStudent(@PathVariable Long id) {
         if (studentRepository.existsById(id)) {
             studentRepository.deleteById(id);
-            return "redirect:/students"; // Redirect về danh sách sinh viên sau khi xóa
+            return "redirect:/students"; // Trở về danh sách sinh viên sau khi xóa
         } else {
-            // Xử lý khi không tìm thấy sinh viên
-            return "redirect:/students?error=notfound"; // Redirect với thông báo lỗi
+            return "redirect:/students?error=notfound"; // Trả về lỗi nếu không tìm thấy sinh viên
         }
     }
 
-    @GetMapping("/{id}/courses")
-    public String showStudentCourses(@PathVariable Long id, Model model) {
-        List<Course> courses = studentRepository.findCoursesByStudentId(id); 
-        model.addAttribute("courses", courses);
-        return "studentCourses"; // Trả về view để hiển thị môn học
-    }
 }

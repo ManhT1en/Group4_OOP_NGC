@@ -3,6 +3,7 @@ package com.project.group4.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,10 +27,7 @@ public class Student {
     @Column(name = "student_id", unique = true, nullable = false)
     private String studentId;
 
-    @Column(name = "gpa")
-    private double gpa;
-
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}) // Thêm cascade vào đây
     @JoinTable(
         name = "student_courses",
         joinColumns = @JoinColumn(name = "student_id"),
@@ -41,14 +39,12 @@ public class Student {
         courses = new ArrayList<>();
     }
 
-    public Student(String name, String studentId, double gpa) {
+    public Student(String name, String studentId) {
         this.name = name;
         this.studentId = studentId;
-        this.gpa = gpa;
         this.courses = new ArrayList<>();
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -61,12 +57,8 @@ public class Student {
         return studentId;
     }
 
-    public double getGpa() {
-        return gpa;
-    }
-
     public List<Course> getCourses() {
-        return courses;  
+        return courses;
     }
 
     public void setId(Long id) {
@@ -81,21 +73,24 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
-    public void addCourse(Course course) {
-        this.courses.add(course);
+    public double calculateGpa() {
+        double totalScore = 0;
+        for (Course course : courses) {
+            totalScore += course.getGrade();
+        }
+        return totalScore / courses.size();
     }
 
     @Override
     public String toString() {
         return "Student{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", studentId='" + studentId + '\'' +
-               ", gpa=" + gpa +
-               '}';
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", studentId='" + studentId + '\'' +
+                '}';
     }
 }
