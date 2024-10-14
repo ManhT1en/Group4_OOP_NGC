@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Quản Lý Sinh Viên</title>
+    <link rel="stylesheet" th:href="@{/students.css}" />
     <script>
         function deleteStudent(id) {
             if (confirm('Bạn có chắc chắn muốn xóa sinh viên này không?')) {
@@ -10,7 +11,7 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        window.location.href = "/students"; // Chuyển hướng đến danh sách sau khi xóa
+                        window.location.href = "/students"; 
                     } else {
                         alert('Xóa sinh viên thất bại.');
                     }
@@ -25,41 +26,37 @@
     </script>
 </head>
 <body>
-<h1>Quản Lý Sinh Viên</h1>
+    <h1>Quản Lý Sinh Viên</h1>
 
-<!-- Form để thêm sinh viên -->
-<h2>Thêm Sinh Viên</h2>
-<form action="/students/add" method="post">
-    <input type="text" name="name" placeholder="Tên" required>
-    <input type="text" name="studentId" placeholder="Mã Sinh Viên" required>
-    <button type="submit">Thêm Sinh Viên</button>
-</form>
+    <h2>Thêm Sinh Viên</h2>
+    <form action="/students/add" method="post">
+        <input type="text" name="name" placeholder="Tên" required>
+        <input type="text" name="studentId" placeholder="Mã Sinh Viên" required>
+        <button type="submit">Thêm Sinh Viên</button>
+    </form>
 
-<!-- Danh Sách Sinh Viên -->
-<h2>Danh Sách Sinh Viên</h2>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Mã Sinh Viên</th>
-            <th>Hành Động</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="student : ${students}">
-            <td th:text="${student.id}"></td>
-            <td th:text="${student.name}"></td>
-            <td th:text="${student.studentId}"></td>
-            <td>
-                <button type="button" th:onclick="'deleteStudent(' + ${student.id} + ')'">Xóa</button>
-                <a th:href="@{/students/{id}/courses(id=${student.id})}">Xem Khóa Học</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<!-- Nút Quay Lại -->
-<button type="button" onclick="goBack()">Quay lại</button>
-
+    <h2>Danh Sách Sinh Viên</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Mã Sinh Viên</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.studentId}"></td>
+                <td>
+                    <button type="button" th:onclick="'deleteStudent(' + ${student.id} + ')'">Xóa</button>
+                    <a th:href="@{/students/{id}/courses(id=${student.id})}">Xem Khóa Học</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" onclick="goBack()">Quay lại</button>
 </body>
 </html>
