@@ -3,8 +3,10 @@ package com.project.group4.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import com.project.group4.models.Course;
 import com.project.group4.models.Student;
 import com.project.group4.repository.CourseRepository;
 import com.project.group4.repository.StudentRepository;
+import com.project.group4.service.StudentService;
 
 @Controller
 @RequestMapping("/students")
@@ -25,6 +28,7 @@ public class StudentController {
 
     @Autowired
     private CourseRepository courseRepository;
+
 
     // Hiển thị danh sách sinh viên
     @GetMapping
@@ -56,14 +60,16 @@ public class StudentController {
         }
     }
 
-    // Xóa sinh viên
-    @PostMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable Long id) {
-        if (studentRepository.existsById(id)) {
-            studentRepository.deleteById(id);
-            return "redirect:/students"; // Trở về danh sách sinh viên sau khi xóa
-        } else {
-            return "redirect:/students?error=notfound"; // Trả về lỗi nếu không tìm thấy sinh viên
+    @Autowired
+    private StudentService studentService;
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
+        try {
+            studentService.deleteStudentById(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
         }
     }
 

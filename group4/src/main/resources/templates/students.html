@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Manage Students</title>
+    <title>Quản Lý Sinh Viên</title>
+    <script>
+        function deleteStudent(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa sinh viên này không?')) {
+                fetch(`/students/delete/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = "/students"; // Chuyển hướng đến danh sách sau khi xóa
+                    } else {
+                        alert('Xóa sinh viên thất bại.');
+                    }
+                })
+                .catch(error => console.error('Lỗi:', error));
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
 <body>
-<h1>Manage Students</h1>
+<h1>Quản Lý Sinh Viên</h1>
 
-<!-- Form Thêm Sinh Viên -->
-<h2>Add Student</h2>
+<!-- Form để thêm sinh viên -->
+<h2>Thêm Sinh Viên</h2>
 <form action="/students/add" method="post">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="text" name="studentId" placeholder="Student ID" required>
-    <button type="submit">Add Student</button>
+    <input type="text" name="name" placeholder="Tên" required>
+    <input type="text" name="studentId" placeholder="Mã Sinh Viên" required>
+    <button type="submit">Thêm Sinh Viên</button>
 </form>
 
-<!-- Danh sách sinh viên -->
-<h2>Student List</h2>
+<!-- Danh Sách Sinh Viên -->
+<h2>Danh Sách Sinh Viên</h2>
 <table>
     <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Student ID</th>
-            <th>Actions</th>
+            <th>Tên</th>
+            <th>Mã Sinh Viên</th>
+            <th>Hành Động</th>
         </tr>
     </thead>
     <tbody>
@@ -31,13 +52,14 @@
             <td th:text="${student.name}"></td>
             <td th:text="${student.studentId}"></td>
             <td>
-                <form action="@{/students/delete/{id}(id=${student.id})}" method="post" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-                <a th:href="@{/students/{id}/courses(id=${student.id})}">View Courses</a>
+                <button type="button" th:onclick="'deleteStudent(' + ${student.id} + ')'">Xóa</button>
+                <a th:href="@{/students/{id}/courses(id=${student.id})}">Xem Khóa Học</a>
             </td>
         </tr>
     </tbody>
 </table>
+<!-- Nút Quay Lại -->
+<button type="button" onclick="goBack()">Quay lại</button>
+
 </body>
 </html>

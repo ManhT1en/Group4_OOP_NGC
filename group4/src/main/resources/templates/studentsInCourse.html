@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh Sách Sinh Viên Trong Khóa Học</title>
+</head>
+<body>
+<h1>Danh Sách Sinh Viên Trong Khóa Học</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Mã Sinh Viên</th>
+            <th>Nhập Điểm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.studentId}"></td>
+            <td>
+                <form th:action="@{/courses/{courseId}/students/{studentId}/grade(courseId=${course.id}, studentId=${student.id})}" method="post">
+                    <input type="number" name="grade" step="0.01" required>
+                    <button type="submit">Nhập Điểm</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

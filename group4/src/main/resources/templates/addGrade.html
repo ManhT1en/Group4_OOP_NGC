@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students in Course</title>
+</head>
+<body>
+<h1>Students in <span th:text="${course.courseName}"></span></h1>
+
+<!-- Form thêm điểm cho sinh viên -->
+<form th:action="@{/courses/{courseId}/students/{studentId}/add-grade(courseId=${course.id}, studentId=${student.id})}" 
+      th:each="student : ${students}" method="post">
+    <p>Student: <span th:text="${student.name}"></span></p>
+    <label for="grade">Grade:</label>
+    <input type="number" step="0.1" name="grade" required>
+    <button type="submit">Add Grade</button>
+</form>
+
+<a href="/courses">Back to Courses</a>
+</body>
+</html>
