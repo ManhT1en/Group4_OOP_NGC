@@ -26,12 +26,11 @@ public class CourseController {
     private CourseRepository courseRepository;
 
     @Autowired
-    private StudentRepository studentRepository;
-
-    @Autowired
     private StudentCourseRepository studentCourseRepository;
 
-    // Hiển thị danh sách các khóa học
+    @Autowired
+    private StudentRepository studentRepository;
+
     @GetMapping
     public String showCourses(Model model) {
         List<Course> courses = courseRepository.findAll();
@@ -52,24 +51,24 @@ public class CourseController {
         
         model.addAttribute("course", course);
         model.addAttribute("students", students);
+        model.addAttribute("studentCourses", studentCourses); // Thêm danh sách StudentCourse vào model
+
         return "addGrade"; // Trả về view để hiển thị danh sách sinh viên
     }
-    
 
     @PostMapping("/{courseId}/students/{studentId}/add-grade")
     public String addGradeForStudent(@PathVariable Long courseId, @PathVariable Long studentId, @RequestParam Double grade) {
         Student student = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("Student not found"));
         Course course = courseRepository.findById(courseId).orElseThrow(() -> new RuntimeException("Course not found"));
-    
-        // Kiểm tra xem sinh viên đã đăng ký môn học chưa
-        StudentCourse studentCourse = studentCourseRepository.findByStudentIdAndCourseId(studentId, courseId)
-                                      .orElse(new StudentCourse(student, course, grade));
         
-        // Cập nhật điểm
+        // Cập nhật điểm cho sinh viên trong khóa học
+        StudentCourse studentCourse = studentCourseRepository.findByStudentIdAndCourseId(studentId, courseId);
+        if (studentCourse == null) {
+            throw new RuntimeException("StudentCourse not found");
+        }
         studentCourse.setGrade(grade);
         studentCourseRepository.save(studentCourse);
-    
-        return "redirect:/courses"; // Trở về danh sách khóa học sau khi thêm điểm
+
+        return "redirect:/courses/" + courseId + "/students";
     }
-    
 }

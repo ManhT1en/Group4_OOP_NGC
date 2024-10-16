@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Students in Course</title>
+    <title>Danh Sách Sinh Viên Trong Khóa Học</title>
+    <link rel="stylesheet" th:href="@{/home.css}" />
 </head>
 <body>
-<h1>Students in <span th:text="${course.courseName}"></span></h1>
+<h1>Danh Sách Sinh Viên Trong Khóa Học</h1>
+<h2 th:text="${course.courseName}"></h2>
 
-<!-- Form thêm điểm cho sinh viên -->
-<form th:action="@{/courses/{courseId}/students/{studentId}/add-grade(courseId=${course.id}, studentId=${student.id})}" 
-      th:each="student : ${students}" method="post">
-    <p>Student: <span th:text="${student.name}"></span></p>
-    <label for="grade">Grade:</label>
-    <input type="number" step="0.1" name="grade" required>
-    <button type="submit">Add Grade</button>
-</form>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Mã Sinh Viên</th>
+            <th>Điểm</th>
+            <th>Nhập Điểm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="studentCourse : ${studentCourses}">
+            <td th:text="${studentCourse.student.id}"></td>
+            <td th:text="${studentCourse.student.name}"></td>
+            <td th:text="${studentCourse.student.studentId}"></td>
+            <td th:text="${studentCourse.grade}"></td>
+            <td>
+                <form th:action="@{/courses/{courseId}/students/{studentId}/add-grade(courseId=${course.id}, studentId=${studentCourse.student.id})}" method="post">
+                    <input type="number" name="grade" step="0.01" required>
+                    <button type="submit">Nhập Điểm</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-<a href="/courses">Back to Courses</a>
+<a th:href="@{/courses}">Back to Course List</a>
 </body>
 </html>

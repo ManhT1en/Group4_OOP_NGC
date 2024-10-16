@@ -1,48 +1,114 @@
-package com.project.group4.models;
+// package com.project.group4.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+// import jakarta.persistence.Column;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.Table;
+// import jakarta.persistence.Transient;
 
-@Entity
-@Table(name = "users")
-public class User {
+// @Entity
+// @Table(name = "`Account`") // Đảm bảo tên bảng trong cơ sở dữ liệu là Account (có chữ A viết hoa)
+// public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     @Column(name = "ID")
+//     private Long id;
 
-    @Column(name = "username" )
-    private String username;
+//     @Column(name = "Roles", nullable = false)
+//     private boolean roles;
 
-    @Column(nullable = false,name = "password")
-    private String password;
+//     @Column(name = "Username", nullable = false, unique = true)
+//     private String username;
 
-    public Long getId() {
-        return id;
-    }
+//     @Column(name = "Password", nullable = false)
+//     private String password;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//     @Transient
+//     private boolean statusLogin = false;
 
-    public String getUsername() {
-        return username;
-    }
+//     // Constructor mặc định
+//     public User() {
+//     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+//     // Constructor đầy đủ tham số
+//     public User(Long id, boolean roles, String username, String password) {
+//         this.id = id;
+//         this.roles = roles;
+//         this.username = username;
+//         this.password = password;
+//     }
 
-    public String getPassword() {
-        return password;
-    }
+//     // Getters và setters
+//     public Long getId() {
+//         return id;
+//     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
+
+//     public boolean isRoles() {
+//         return roles;
+//     }
+
+//     public void setRoles(boolean roles) {
+//         this.roles = roles;
+//     }
+
+//     public String getUsername() {
+//         return username;
+//     }
+
+//     public void setUsername(String username) {
+//         this.username = username;
+//     }
+
+//     public String getPassword() {
+//         return password;
+//     }
+
+//     public void setPassword(String password) {
+//         this.password = password;
+//     }
+
+//     // Phương thức kiểm tra đăng nhập (logic sẽ do service thực hiện)
+//     public void login(String username, String password) {
+//         if (this.username.equals(username) && this.password.equals(password)) {
+//             statusLogin = true;
+//             System.out.println("Đăng nhập thành công");
+//         } else {
+//             System.out.println("Thông tin đăng nhập không chính xác!");
+//         }
+//     }
+
+//     // Phương thức đăng xuất
+//     public void logout() {
+//         if (statusLogin) {
+//             statusLogin = false;
+//             System.out.println("Bạn đã đăng xuất");
+//         } else {
+//             System.out.println("Bạn chưa đăng nhập!");
+//         }
+//     }
+
+//     // Phương thức xem thông tin cá nhân
+//     public String viewProfile() {
+//         if (statusLogin) {
+//             return "ID: " + this.getId() + " | Username: " + this.getUsername() + " | Roles: " + (this.isRoles() ? "Admin" : "User");
+//         }
+//         System.out.println("Bạn chưa đăng nhập!");
+//         return "";
+//     }
+
+//     // Phương thức kiểm tra trạng thái đăng nhập
+//     public boolean isStatusLogin() {
+//         return statusLogin;
+//     }
+
+//     public void setStatusLogin(boolean statusLogin) {
+//         this.statusLogin = statusLogin;
+//     }
+// }
