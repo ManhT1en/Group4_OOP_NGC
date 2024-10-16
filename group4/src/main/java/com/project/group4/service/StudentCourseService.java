@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import com.project.group4.models.Course;
 import com.project.group4.models.Student;
 import com.project.group4.models.StudentCourse;
-import com.project.group4.repository.CourseRepository;
 import com.project.group4.repository.StudentCourseRepository;
 import com.project.group4.repository.StudentRepository;
+import com.project.group4.repository.CourseRepository;
 
 @Service
 public class StudentCourseService {
@@ -32,5 +32,14 @@ public class StudentCourseService {
         studentCourse.setCourse(course);
         
         return studentCourseRepository.save(studentCourse);
+    }
+
+    public void registerStudentForCourse(Student student, Course course) {
+        StudentCourse studentCourse = new StudentCourse(student, course);
+        studentCourseRepository.save(studentCourse);
+    }
+
+    public boolean isStudentRegisteredForCourse(Student student, Course course) {
+        return studentCourseRepository.findByStudentAndCourse(student, course) != null;
     }
 }

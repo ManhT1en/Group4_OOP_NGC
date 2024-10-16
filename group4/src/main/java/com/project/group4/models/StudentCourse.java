@@ -31,6 +31,12 @@ public class StudentCourse {
     // Constructors
     public StudentCourse() {}
 
+    public StudentCourse(Student student, Course course) {
+        this.student = student;
+        this.course = course;
+        this.id = new StudentCourseId(student.getId(), course.getId());
+    }
+
     public StudentCourse(Student student, Course course, Double grade) {
         this.student = student;
         this.course = course;

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký Môn Học</title>
-    <link th:href="@{/css/styles.css}" href="../static/css/styles.css">
 </head>
 <body>
-    <h2>Đăng Ký Môn Học</h2>
-    <form th:action="@{/register}" method="post">
-        <div>
-            <label for="courseId">Chọn Môn Học:</label>
-            <select name="courseId" id="courseId">
-                <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.courseName}"></option>
-            </select>
-        </div>
+    <h1>Đăng Ký Môn Học</h1>
+
+    <form action="/register" method="post">
+        <label for="student">Chọn Sinh Viên:</label>
+        <select id="student" name="studentId" required>
+            <option value="" disabled selected>Chọn Sinh Viên</option>
+            <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}"></option>
+        </select>
+
+        <label for="course">Chọn Môn Học:</label>
+        <select id="course" name="courseId" required>
+            <option value="" disabled selected>Chọn Môn Học</option>
+            <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.courseName}"></option>
+        </select>
+
         <button type="submit">Đăng Ký</button>
     </form>
+
     <p th:text="${message}"></p>
 </body>
 </html>
