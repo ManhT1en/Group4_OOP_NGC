@@ -11,4 +11,5 @@ import com.project.group4.models.StudentCourse;
 public interface StudentCourseRepository extends JpaRepository<StudentCourse, Long> {
     StudentCourse findByStudentIdAndCourseId(Long studentId, Long courseId);
     List<StudentCourse> findByCourseId(Long courseId);
+    List<StudentCourse> findByStudentId(Long studentId);
 }

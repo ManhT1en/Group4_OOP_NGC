@@ -16,6 +16,9 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("SELECT s FROM Student s JOIN s.courses c WHERE c.id = :courseId")
     List<Student> findStudentsByCourseId(@Param("courseId") Long courseId);
+    
+    @Query("SELECT s FROM Student s JOIN s.courses sc GROUP BY s HAVING AVG(sc.grade) >= :gpa")
+    List<Student> findByGpaGreaterThanEqual(@Param("gpa") double gpa);
 
     @Modifying
     @Transactional

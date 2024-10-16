@@ -19,10 +19,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="course : ${courses}">
-                <td th:text="${course.courseId}"></td>
-                <td th:text="${course.courseName}"></td>
-                <td th:text="${course.grade}"></td>
+            <tr th:each="studentCourse : ${studentCourses}">
+                <td th:text="${studentCourse.course.courseId}"></td>
+                <td th:text="${studentCourse.course.courseName}"></td>
+                <td th:text="${studentCourse.grade}"></td>
             </tr>
         </tbody>
     </table>

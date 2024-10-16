@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "students")
@@ -34,6 +35,9 @@ public class Student {
         inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<Course> courses;
+    
+    @Transient
+    private double gpa;
 
     public Student() {
         courses = new ArrayList<>();
@@ -77,12 +81,12 @@ public class Student {
         this.courses = courses;
     }
 
-    public double calculateGpa() {
-        double totalScore = 0;
-        for (Course course : courses) {
-            totalScore += course.getGrade();
-        }
-        return totalScore / courses.size();
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
     }
 
     @Override
