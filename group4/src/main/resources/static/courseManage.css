@@ -7,7 +7,41 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
+
+/* Định vị main cho nội dung chính */
+main {
+    width: 100%;
+    max-width: 900px;
+    flex-grow: 1; /* Đẩy footer xuống cuối */
+}
+
+main .button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.back-to-home {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ed4d4d; /* Màu đỏ cho nút */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-to-home:hover {
+    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+}
+
 
 header {
     text-align: center;

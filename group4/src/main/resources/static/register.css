@@ -9,32 +9,56 @@ body {
     align-items: center;
 }
 
-/* Header */
+
 header {
     text-align: center;
     margin-bottom: 20px;
 }
 
 h1 {
-    color: #2c3e50; /* Màu xám đậm */
-    font-size: 2.5em; /* Kích thước chữ lớn */
+    color: #2c3e50; 
+    font-size: 2.5em; 
 }
 
-/* Main */
+
 main {
     width: 100%;
-    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+    max-width: 600px;
 }
 
-/* Form Group */
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.back-to-home {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ed4d4d; /* Màu đỏ cho nút */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-to-home:hover {
+    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+}
+
 .form-group {
-    margin-bottom: 20px; /* Khoảng cách giữa các trường */
+    margin-bottom: 20px; 
 }
 
 label {
-    display: block; /* Đặt label thành block để nó đứng trên input */
-    margin-bottom: 5px; /* Khoảng cách giữa label và input */
-    color: #007bff; /* Màu xanh dương cho label */
+    display: block; 
+    margin-bottom: 5px; 
+    color: #007bff; 
 }
 
 select {
