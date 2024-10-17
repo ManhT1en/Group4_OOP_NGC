@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sinh Viên</title>
     <link rel="stylesheet" th:href="@{/students.css}" />
     <script>
@@ -28,44 +30,51 @@
 <body>
     <h1>Quản Lý Sinh Viên</h1>
 
-    <h2>Thêm Sinh Viên</h2>
-    <form action="/students/add" method="post">
-        <input type="text" name="name" placeholder="Tên" required>
-        <input type="text" name="studentId" placeholder="Mã Sinh Viên" required>
-        <button type="submit">Thêm Sinh Viên</button>
-    </form>
+    <section class="add-student">
+        <h2>Thêm Sinh Viên</h2>
+        <form action="/students/add" method="post">
+            <input type="text" name="name" placeholder="Tên" required>
+            <input type="text" name="studentId" placeholder="Mã Sinh Viên" required>
+            <button type="submit">Thêm Sinh Viên</button>
+        </form>
+    </section>
 
-    <h2>Lọc Sinh Viên Theo GPA</h2>
-    <form action="/students/filter" method="get">
-        <label for="gpa">GPA:</label>
-        <input type="number" step="0.1" id="gpa" name="gpa" required>
-        <button type="submit">Lọc</button>
-    </form>
+    <section class="filter-students">
+        <h2>Lọc Sinh Viên Theo GPA</h2>
+        <form action="/students/filter" method="get">
+            <label for="gpa">GPA:</label>
+            <input type="number" step="0.1" id="gpa" name="gpa" required>
+            <button type="submit">Lọc</button>
+        </form>
+    </section>
 
-    <h2>Danh Sách Sinh Viên</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên</th>
-                <th>Mã Sinh Viên</th>
-                <th>GPA</th>
-                <th>Hành Động</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="student : ${students}">
-                <td th:text="${student.id}"></td>
-                <td th:text="${student.name}"></td>
-                <td th:text="${student.studentId}"></td>
-                <td th:text="${student.gpa}"></td>
-                <td>
-                    <button type="button" th:onclick="'deleteStudent(' + ${student.id} + ')'">Xóa</button>
-                    <a th:href="@{/students/{id}/courses(id=${student.id})}">Xem Khóa Học</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="student-list">
+        <h2>Danh Sách Sinh Viên</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Mã Sinh Viên</th>
+                    <th>GPA</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.id}"></td>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.studentId}"></td>
+                    <td th:text="${student.gpa}"></td>
+                    <td>
+                        <button type="button" th:onclick="'deleteStudent(' + ${student.id} + ')'">Xóa</button>
+                        <a th:href="@{/students/{id}/courses(id=${student.id})}">Xem Khóa Học</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
     <button type="button" onclick="goBack()">Quay lại</button>
 </body>
 </html>

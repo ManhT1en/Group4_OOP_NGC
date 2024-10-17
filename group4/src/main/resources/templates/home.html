@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{/home.css}" />
+    <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-    <h1>Welcome to Home</h1>
-    <p th:text="'Hello, ' + ${username}">Hello, User</p>
+    <header>
+        <h1>Welcome to Home</h1>
+        <p th:text="'Hello, ' + ${username}">Hello, User</p>
+    </header>
 
-    <div>
-        <h2>Manage Students</h2>
-        <a th:href="@{/students}">View Students</a>
-    </div>
-    <div>
-        <h2>Manage Courses</h2>
-        <a th:href="@{/courses}">View Courses</a>
-    </div>
-    <div>
-        <h2>Register for Courses</h2>
-        <a th:href="@{/register}">Register</a>
-    </div>
+    <main>
+        <section class="grid-container">
+            <div class="card">
+                <h2>Manage Students</h2>
+                <a th:href="@{/students}">View Students</a>
+            </div>
+            <div class="card">
+                <h2>Manage Courses</h2>
+                <a th:href="@{/courses}">View Courses</a>
+            </div>
+            <div class="card">
+                <h2>Register for Courses</h2>
+                <a th:href="@{/register}">Register</a>
+            </div>
+        </section>
+    </main>
 
-    <form th:action="@{/logout}" method="post">
-        <button type="submit">Logout</button>
-    </form>
+    <footer>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </footer>
 </body>
 </html>

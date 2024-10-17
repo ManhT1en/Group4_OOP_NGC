@@ -1,0 +1,96 @@
+/* Tổng thể */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* Nền xanh nhạt */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung */
+}
+
+/* Tiêu đề */
+h1 {
+    color: #2c3e50; /* Màu xám đậm cho tiêu đề chính */
+    font-size: 2.5em; /* Kích thước chữ lớn */
+    margin-bottom: 10px; /* Khoảng cách dưới tiêu đề chính */
+}
+
+h2 {
+    color: #007bff; /* Màu xanh dương cho tiêu đề phụ */
+    font-size: 1.5em; /* Kích thước chữ vừa */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề phụ */
+}
+
+/* Bảng danh sách */
+table {
+    width: 100%;
+    max-width: 900px; /* Giới hạn chiều rộng tối đa */
+    border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ cho bảng */
+}
+
+table th, table td {
+    padding: 12px; /* Khoảng cách trong ô */
+    border: 1px solid #ddd; /* Đường viền nhẹ cho ô */
+    text-align: center; /* Căn giữa nội dung trong ô */
+}
+
+table th {
+    background-color: #007bff; /* Màu xanh cho tiêu đề bảng */
+    color: white; /* Chữ màu trắng */
+    font-weight: bold; /* Chữ in đậm */
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f9ff; /* Màu nền cho hàng chẵn */
+}
+
+table tr:hover {
+    background-color: #d6e9ff; /* Hiệu ứng hover cho hàng */
+}
+
+/* Nhập điểm */
+table td input[type="number"] {
+    width: 80px; /* Chiều rộng của ô nhập điểm */
+    padding: 5px; /* Khoảng cách trong ô nhập điểm */
+    border: 1px solid #ccc; /* Đường viền cho ô nhập điểm */
+    border-radius: 5px; /* Bo tròn góc */
+    transition: border-color 0.3s; /* Hiệu ứng cho viền khi focus */
+}
+
+table td input[type="number"]:focus {
+    border-color: #3498db; /* Màu viền khi focus */
+}
+
+/* Nút nhập điểm */
+table td button {
+    padding: 5px 10px; /* Khoảng cách cho nút */
+    background-color: #28a745; /* Màu xanh lá cho nút */
+    color: white; /* Chữ màu trắng */
+    border: none; /* Không có đường viền */
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Con trỏ khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng cho nút khi hover */
+}
+
+table td button:hover {
+    background-color: #218838; /* Màu đậm hơn khi hover */
+}
+
+/* Liên kết quay lại */
+a {
+    display: inline-block; /* Hiển thị như block */
+    margin-top: 20px; /* Khoảng cách trên cho liên kết */
+    padding: 10px 20px; /* Khoảng cách cho liên kết */
+    background-color: #3498db; /* Màu xanh cho liên kết */
+    color: white; /* Chữ màu trắng */
+    text-decoration: none; /* Bỏ gạch chân */
+    border-radius: 5px; /* Bo tròn góc */
+    transition: background-color 0.3s; /* Hiệu ứng khi hover */
+}
+
+a:hover {
+    background-color: #2980b9; /* Màu đậm hơn khi hover */
+}

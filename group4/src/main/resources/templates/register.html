@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký Môn Học</title>
+    <link rel="stylesheet" th:href="@{/register.css}" />
 </head>
 <body>
-    <h1>Đăng Ký Môn Học</h1>
+    <header>
+        <h1>Đăng Ký Môn Học</h1>
+    </header>
 
-    <form action="/register" method="post">
-        <label for="student">Chọn Sinh Viên:</label>
-        <select id="student" name="studentId" required>
-            <option value="" disabled selected>Chọn Sinh Viên</option>
-            <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}"></option>
-        </select>
+    <main>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="student">Chọn Sinh Viên:</label>
+                <select id="student" name="studentId" required>
+                    <option value="" disabled selected>Chọn Sinh Viên</option>
+                    <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}"></option>
+                </select>
+            </div>
 
-        <label for="course">Chọn Môn Học:</label>
-        <select id="course" name="courseId" required>
-            <option value="" disabled selected>Chọn Môn Học</option>
-            <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.courseName}"></option>
-        </select>
+            <div class="form-group">
+                <label for="course">Chọn Môn Học:</label>
+                <select id="course" name="courseId" required>
+                    <option value="" disabled selected>Chọn Môn Học</option>
+                    <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.courseName}"></option>
+                </select>
+            </div>
 
-        <button type="submit">Đăng Ký</button>
-    </form>
+            <button type="submit">Đăng Ký</button>
+        </form>
 
-    <p th:text="${message}"></p>
+        <p th:text="${message}" class="message"></p>
+    </main>
 </body>
 </html>

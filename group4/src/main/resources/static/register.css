@@ -1,0 +1,74 @@
+/* Tổng thể */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9f5ff; /* Nền xanh nhạt */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #2c3e50; /* Màu xám đậm */
+    font-size: 2.5em; /* Kích thước chữ lớn */
+}
+
+/* Main */
+main {
+    width: 100%;
+    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px; /* Khoảng cách giữa các trường */
+}
+
+label {
+    display: block; /* Đặt label thành block để nó đứng trên input */
+    margin-bottom: 5px; /* Khoảng cách giữa label và input */
+    color: #007bff; /* Màu xanh dương cho label */
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b2c9e2; /* Đường viền xám nhạt */
+    border-radius: 5px; /* Bo tròn góc */
+    transition: border-color 0.3s; /* Hiệu ứng cho viền khi focus */
+}
+
+select:focus {
+    border-color: #3498db; /* Màu viền khi focus */
+}
+
+/* Nút đăng ký */
+button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Màu xanh lá cho nút */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng khi hover */
+    width: 100%; /* Chiều rộng đầy đủ */
+}
+
+button:hover {
+    background-color: #218838; /* Màu đậm hơn khi hover */
+}
+
+/* Thông báo */
+.message {
+    margin-top: 20px;
+    text-align: center;
+    color: #555; /* Màu chữ cho thông báo */
+    font-size: 1.1em; /* Kích thước chữ cho thông báo */
+}

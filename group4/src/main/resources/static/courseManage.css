@@ -1,7 +1,7 @@
 /* Tổng thể */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e9f5ff;
+    background-color: #f0f8ff; /* Màu nền xanh nhạt */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -9,31 +9,36 @@ body {
     align-items: center;
 }
 
-h1 {
-    color: #2c3e50; /* Màu xám đậm cho tiêu đề */
-    font-size: 2em;
+header {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-p {
-    text-align: center;
-    color: #555;
-    font-size: 1.1em;
+h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+}
+
+.course-list {
+    margin-top: 30px;
 }
 
 h2 {
     color: #007bff;
     text-align: center;
-    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 table {
     width: 100%;
-    max-width: 800px;
     border-collapse: collapse;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
     margin-top: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho bảng */
 }
 
 table th, table td {
@@ -43,24 +48,22 @@ table th, table td {
 }
 
 table th {
-    background-color: #007bff; /* Màu xanh dương cho tiêu đề bảng */
+    background-color: #007bff; /* Màu xanh cho tiêu đề bảng */
     color: white;
     font-weight: bold;
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f9ff;
+    background-color: #f2f9ff; /* Màu nền xen kẽ */
 }
 
 table tr:hover {
-    background-color: #d6e9ff;
+    background-color: #d6e9ff; /* Hiệu ứng hover cho hàng */
 }
 
 a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #3498db;
+    padding: 5px 10px;
+    background-color: #3498db; /* Màu xanh cho liên kết */
     color: white;
     text-decoration: none;
     border-radius: 5px;
