@@ -5,6 +5,9 @@
 2. **Nguyễn Mạnh Tiến**
    - ID: 22010151
 
+## DEMO APP
+[Watch this video on YouTube](https://www.youtube.com/watch?v=KtgPDJPSkQs)
+
 ## NỘI DUNG
 ### 1. SƠ ĐỒ KHỐI YÊU CẦU
 #### 1.1 UML Component Diagram
