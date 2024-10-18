@@ -6,7 +6,7 @@
    - ID: 22010151
 
 ## DEMO APP
-[Watch this video on YouTube](https://www.youtube.com/watch?v=KtgPDJPSkQs)
+[HỆ THỐNG QUẢN LÍ SINH VIÊN](https://www.youtube.com/watch?v=KtgPDJPSkQs)
 
 ## NỘI DUNG
 ### 1. SƠ ĐỒ KHỐI YÊU CẦU
