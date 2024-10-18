@@ -30,3 +30,21 @@ Một số chức năng cơ bản:
 
 ##### Màn hình đăng nhập đầu tiên:
 ![Màn hình đăng nhập đầu tiên ](image/View_Login.png)
+
+## Screenshots
+
+| Login  |  Home
+|:-:|:-:|
+| ![login](image/Loginapp.png) | ![home](image/Home.png) |
+
+| Manage Student  |  View Course
+|:-:|:-:|
+| ![manage_student](image/Manage_student.png) | ![view_course](image/View_course.png) |
+
+| Manage Course  |  View Student
+|:-:|:-:|
+| ![manage_course](image/Manage_course.png) | ![view_student](image/View_student.png) |
+
+| Register Course  |  Select Register
+|:-:|:-:|
+| ![register_course](image/Register_course.png) | ![select_register](image/Select_register.png) |
