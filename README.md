@@ -5,7 +5,7 @@
 2. **Nguyễn Mạnh Tiến**
    - ID: 22010151
 
-## DEMO APP
+## LINK DEMO APP
 [HỆ THỐNG QUẢN LÍ SINH VIÊN](https://www.youtube.com/watch?v=KtgPDJPSkQs)
 
 ## NỘI DUNG
