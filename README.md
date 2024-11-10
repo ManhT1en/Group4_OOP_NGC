@@ -16,6 +16,11 @@
 #### 1.2 UML Sequence Diagram
 Một số chức năng cơ bản:
 
+#### Link Trang Web online
+[Link Online](https://turbo-space-dollop-x5wrp46456p29vqp-8080.app.github.dev/students/1/courses)
+
+![Trang WEB public](image/Tien_Chi.png)
+
 ##### Đăng nhập:
 ![Đăng nhập](image/login.jpg)
 
